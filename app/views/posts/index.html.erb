@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+<div class="card">
+  <div class="card-body">
+    <h1 class="m-5">My Posts</h1>
+    <p>
+      You must be authenticated to see this page so if you're seeing it then
+      everything worked as expected 🎉
+    </p>
+    <h2>Current User</h2>
+    <p>Id: <%= current_user.uid %></p>
+    <p>Name: <%= current_user.name %></p>
+    <p>Username: <%= current_user.username %></p>
+    <p>Email: <%= current_user.email %></p>
+    <p><a href="/logout" class="btn btn-danger">Logout system</a></p>
+  </div>
+</div>
+
+<ul class="list-group">
+  <% @posts.each do |post| %>
+    <li class="list-group-item">
+      <div class="d-flex align-items-center">
+        <div class="flex-grow-1 text-start">
+          <%= post.id %>.
+          <b><%= post.title %></b>
+          <%= post.description %>
+        </div>
+        <div class="ms-3 flex-shrink-0">
+          <%= link_to 'Show', post, class: "btn btn-sm btn-secondary text-white" %>
+          <%= link_to 'Edit', edit_post_path(post), class: "btn btn-sm btn-primary text-white" %>
+          <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger  text-white" %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>

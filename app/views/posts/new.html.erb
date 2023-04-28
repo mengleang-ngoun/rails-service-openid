@@ -1,0 +1,9 @@
+<div class="card">
+  <div class="card-body">
+    <h1 class="m-5">New Post</h1>
+
+    <%= render 'form', post: @post %>
+
+    <%= link_to 'Back', posts_path, class: "btn btn-primary" %>
+  </div>
+</div>
